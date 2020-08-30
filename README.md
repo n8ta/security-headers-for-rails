@@ -8,7 +8,7 @@ It's necessary to uncheck "follow redirects" for sites that use SSO.
 
 ### CSP
 Read about what CSP is and why it matters check [this out](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
-CSP is configured for rails in ```config/initalizers/content_security_policy.rb```. Here's an example security policy.
+CSP is configured for rails in ```config/initalizers/content_security_policy.rb```. Here's an example security policy. In general you want to allow as little as possible. For instance if you aren't using jquery, cloudflare, or duo you should remove the lines allowing these. 
 
 ```ruby
 Rails.application.config.content_security_policy do |policy|
