@@ -21,11 +21,11 @@ Rails.application.config.content_security_policy do |policy|
   policy.frame_src "*.duosecurity.com 'self'"
 end
 ```
-The default policy is require https and only load content from ourselves. So if someone injects ```<script src='malicious.co.uk'></script>``` into the DOM it will violate the CSP and the browser will refuse to load it. Now we may want to include our our js, in this case jquery. So we can add any domain we want to the script_src policy. Any time you load a script or a style from a new domain you'll need to add it to the CSP. Now it's still possible for the script we load at code.jquery.com to change without our knowledge. To prevent this checkout the SRI section.
+The default policy is require https and only load content from ourselves. So if someone injects ```<script src='malicious.co.uk'></script>``` into the DOM it will violate the CSP and the browser will refuse to load it. Now we may want to include our own js, in this case jquery. So we can add any domain we want to the script_src policy. Any time you load a script or a style from a new domain you'll need to add it to the CSP. Now it's still possible for the script we load at code.jquery.com to change without our knowledge. To prevent this checkout the SRI section.
 
-It's important to allow duo frames if you're using MFA. Otherwise frame_src none is fine.
+Many sites at my current job use duo security for MFA. If you don't iframe any other site frame_src none is prefered.
 
-It's also good practice to download the files available at each of the CDNs listed and serve them yourself (and then remove them from the CSP). This prevents your code breaking what cdn.datatables.net goes down. And if you're not using SRI it prevents malicious code from being injected into the page.
+It's also good practice to download the files available at each of the CDNs listed and serve them yourself (and then remove them from the CSP). This prevents your code breaking when cdn.datatables.net goes down. And if you're not using SRI it prevents malicious code from being injected into the page.
 
 ### Other Headers
 Here's a good default to put in ```config/enviorments/production.rb```
