@@ -28,7 +28,7 @@ Many sites at my current job use duo security for MFA. If you don't iframe any o
 It's also good practice to download the files available at each of the CDNs listed and serve them yourself (and then remove them from the CSP). This prevents your code breaking when cdn.datatables.net goes down. And if you're not using SRI it prevents malicious code from being injected into the page.
 
 ### Other Headers
-Here's a good default to put in ```config/enviorments/production.rb```
+Here's a good default to put in ```config/environments/production.rb```
 ```ruby
   config.action_dispatch.default_headers = {
       'Referrer-Policy' => 'same-origin',
@@ -53,7 +53,7 @@ Here's a good default to put in ```config/enviorments/production.rb```
 
 ## Secure Cookie Session Store
 Delete ```config/initalizers/session_store.rb``` 
-We're going to configure cookies differently for each enviornment in ```config/enviornments/*``` 
+We're going to configure cookies differently for each environment in ```config/environments/*``` 
 For production we prefix the key with *\__Secure* which means it can only be read/written over https.
 We also add same_site: strict so that our app's session cookie (differnet from the SSO cookie) isn't sent to anyone else. 
 #### Development 
