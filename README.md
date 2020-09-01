@@ -55,7 +55,7 @@ Here's a good default to put in ```config/environments/production.rb```
 Delete ```config/initalizers/session_store.rb``` 
 We're going to configure cookies differently for each environment in ```config/environments/*``` 
 For production we prefix the key with *\__Secure* which means it can only be read/written over https.
-We also add same_site: strict so that our app's session cookie (differnet from the SSO cookie) isn't sent to anyone else. 
+We also add same_site: strict so that our app's session cookie isn't sent to anyone else. 
 #### Development 
 ```ruby
 Rails.application.configure do
